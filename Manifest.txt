@@ -1,0 +1,14 @@
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+lib/gappsprovisioning.rb
+lib/gappsprovisioning/connection.rb
+lib/gappsprovisioning/exceptions.rb
+lib/gappsprovisioning/provisioningapi.rb
+script/console
+script/destroy
+script/generate
+test/test_gappsprovisioning.rb
+test/test_helper.rb
