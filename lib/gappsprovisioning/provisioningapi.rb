@@ -350,7 +350,7 @@ module GAppsProvisioning #:nodoc:
     def update_group(group_id, group_name, description, email_permission)
       msg = RequestMessage.new(false)
       msg.about_group(group_id, group_name, description, email_permission)
-      xml_response = request(:group_update, group_id, @headers)
+      xml_response = request(:group_update, group_id, @headers, msg.to_s)
       group_entry = GroupEntry.new(xml_response.elements["entry"])
     end
     
