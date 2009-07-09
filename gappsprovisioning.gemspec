@@ -2,12 +2,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gappsprovisioning}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["FIXME full name"]
-  s.date = %q{2008-12-22}
-  s.description = %q{Provisioning API v2.0 Ruby client library for Google Apps.  Based on GData API v2.0.  * running even behind authenticated http proxies * using REXML (no extra module dependency)  Author: Jerome Bousquie  http://personnel.univ-reunion.fr/bousquie/}
+  s.authors = ["pzingg@kentfieldschools.org"]
+  s.date = %q{2009-07-09}
+  s.description = %q{Provisioning API v2.0 Ruby client library for Google Apps.  Based on GData API v2.0, with Groups API changes * running even behind authenticated http proxies * using REXML (no extra module dependency)  Author: Jerome Bousquie  http://personnel.univ-reunion.fr/bousquie/}
   s.email = ["FIXME email"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc"]
   s.files = ["History.txt", "Manifest.txt", "PostInstall.txt", "README.rdoc", "Rakefile", "lib/gappsprovisioning.rb", "lib/gappsprovisioning/connection.rb", "lib/gappsprovisioning/exceptions.rb", "lib/gappsprovisioning/provisioningapi.rb", "script/console", "script/destroy", "script/generate", "test/test_gappsprovisioning.rb", "test/test_helper.rb"]

@@ -17,37 +17,37 @@
 # require 'cgi'
 
 module GAppsProvisioning #:nodoc:
-	class Connection
-	attr_reader  :http_connection
-	
-		# Establishes SSL connection to Google host
-		# params :
-		#    ssl_mode = 'none' (connect using http only)
-		#    ssl_mode = 'verified'
-		#    ssl_mode = 'unverified' (use at your own risk!)
-		def initialize(host, port, proxy=nil, proxy_port=nil, proxy_user=nil, proxy_passwd=nil, ssl_mode='unverified')
-			conn = Net::HTTP.new(host, port, proxy, proxy_port, proxy_user, proxy_passwd)
-			if !ssl_mode.nil? && ssl_mode != 'none'
-			  conn.use_ssl = true
-			  #conn.enable_post_connection_check=  true
-			  conn.verify_mode = (ssl_mode == 'unverified') ? 
-			    OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
-			  store = OpenSSL::X509::Store.new
-			  store.set_default_paths
-			  conn.cert_store = store
-			end
-			conn.start
-			@http_connection = conn
-		end
-	
-		# Performs the http request and returns the http response
-		def perform(method, path, body=nil, header=nil)
-			req = Net::HTTPGenericRequest.new(method, !body.nil?, true, path)
-			req['Content-Type'] = header['Content-Type'] if header['Content-Type']
-			req['Authorization'] = header['Authorization'] if header['Authorization']
-			req['Content-length'] = body.length.to_s if body
-			resp = @http_connection.request(req, body)
-			return resp
-		end
-	end
+  class Connection
+  attr_reader  :http_connection
+  
+    # Establishes SSL connection to Google host
+    # params :
+    #    ssl_mode = 'none' (connect using http only)
+    #    ssl_mode = 'verified'
+    #    ssl_mode = 'unverified' (use at your own risk!)
+    def initialize(host, port, proxy=nil, proxy_port=nil, proxy_user=nil, proxy_passwd=nil, ssl_mode='unverified')
+      conn = Net::HTTP.new(host, port, proxy, proxy_port, proxy_user, proxy_passwd)
+      if !ssl_mode.nil? && ssl_mode != 'none'
+        conn.use_ssl = true
+        #conn.enable_post_connection_check=  true
+        conn.verify_mode = (ssl_mode == 'unverified') ? 
+          OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
+        store = OpenSSL::X509::Store.new
+        store.set_default_paths
+        conn.cert_store = store
+      end
+      conn.start
+      @http_connection = conn
+    end
+  
+    # Performs the http request and returns the http response
+    def perform(method, path, body=nil, header=nil)
+      req = Net::HTTPGenericRequest.new(method, !body.nil?, true, path)
+      req['Content-Type'] = header['Content-Type'] if header['Content-Type']
+      req['Authorization'] = header['Authorization'] if header['Authorization']
+      req['Content-length'] = body.length.to_s if body
+      resp = @http_connection.request(req, body)
+      return resp
+    end
+  end
 end
