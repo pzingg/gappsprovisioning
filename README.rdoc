@@ -31,9 +31,9 @@ See examples in ProvisioningApi.new documentation for handling proxies.
 
 <tt>adminuser = "root@mydomain.com"
 password  = "PaSsWo4d!"
-myapps = ProvisioningApi.new(adminuser, password)
+myapps = ProvisioningApi.new(adminuser, password)</tt>
 
-new_user = myapps.create_user("jsmith", "john", "smith", "secret", nil, "2048")
+<tt>new_user = myapps.create_user("jsmith", "john", "smith", "secret", nil, "2048")
 puts new_user.family_name
 puts new_user.given_name</tt>
 
