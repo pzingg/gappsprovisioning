@@ -14,8 +14,7 @@ Based on GData API v2.0.
  * using REXML (no extra module dependency)
 
 Author: Jerome Bousquie
- 
-http://personnel.univ-reunion.fr/bousquie/
+  http://personnel.univ-reunion.fr/bousquie/
 
 == FEATURES/PROBLEMS:
 
@@ -30,16 +29,15 @@ See examples in ProvisioningApi.new documentation for handling proxies.
 
 === Create a new user
 
-adminuser = "root@mydomain.com"
+<tt>adminuser = "root@mydomain.com"
 password  = "PaSsWo4d!"
 myapps = ProvisioningApi.new(adminuser, password)
 
 new_user = myapps.create_user("jsmith", "john", "smith", "secret", nil, "2048")
 puts new_user.family_name
-puts new_user.given_name
+puts new_user.given_name</tt>
 
 === Update a user
 
-user = myapps.retrieve_user('jsmith')
-user_updated = myapps.update_user(user.username, user.given_name, user.family_name, nil, nil, "true")
-
+<tt>user = myapps.retrieve_user('jsmith')
+user_updated = myapps.update_user(user.username, user.given_name, user.family_name, nil, nil, "true")</tt>
