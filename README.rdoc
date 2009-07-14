@@ -3,7 +3,7 @@
 Gemified version of Google Code project at
   http://code.google.com/p/gdatav2rubyclientlib/
 
-Packaged as a gem by Peter Zingg using Dr. Nic's newgem gem.
+Packaged as a gem by Peter Zingg using technicalpickles-jeweler gem.
 
 == DESCRIPTION:
 
