@@ -1,28 +1,42 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
-require File.dirname(__FILE__) + '/lib/gappsprovisioning'
-
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('gappsprovisioning', GAppsProvisioning::VERSION) do |p|
-  p.developer('Peter Zingg', 'pzingg@kentfieldschools.org')
-  p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
-  p.rubyforge_name       = p.name # TODO this is default value
-  # p.extra_deps         = [
-  #   ['activesupport','>= 2.0.2'],
-  # ]
-  p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
-  ]
-  
-  p.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
-  p.rsync_args = '-av --delete --ignore-errors'
+require 'rake'
+require 'rake/testtask'
+require 'rake/rdoctask'
+# require 'rcov/rcovtask'
+ 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = %q{gappsprovisioning}
+    s.rubyforge_project = %q{gappsprovisioning}
+    s.homepage = %q{http://github.com/pzingg/gappsprovisioning}
+    s.authors = ["Jerome Bousquie", "Peter Zingg"]
+    s.email = %q{peter.zingg@gmail.com}
+    s.summary = %q{Google Apps Provisioning API v2.0 Ruby client library}
+    s.description = %q{Google Apps Provisioning API v2.0 Ruby client library.  Based on GData API v2.0, with Groups API changes.}
+  end
+  Jeweler::RubyforgeTasks.new
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
-
-require 'newgem/tasks' # load /tasks/*.rake
-Dir['tasks/**/*.rake'].each { |t| load t }
-
-# TODO - want other tests/tasks run by default? Add them to the list
-# task :default => [:spec, :features]
+ 
+Rake::TestTask.new do |t|
+  t.libs << 'lib'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
+end
+ 
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = 'Jeweler'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+ 
+# Rcov::RcovTask.new do |t|
+#  t.libs << "test"
+#  t.test_files = FileList['test/*_test.rb']
+#  t.verbose = true
+# end
+ 
+# task :default => :rcov
