@@ -29,15 +29,15 @@ See examples in ProvisioningApi.new documentation for handling proxies.
 
 === Create a new user
 
-<tt>adminuser = "root@mydomain.com"</tt>
-<tt>password  = "PaSsWo4d!"</tt>
-<tt>myapps = ProvisioningApi.new(adminuser, password)</tt>
+  adminuser = "root@mydomain.com"
+  password  = "PaSsWo4d!"
+  myapps = ProvisioningApi.new(adminuser, password)
 
-<tt>new_user = myapps.create_user("jsmith", "john", "smith", "secret", nil, "2048")</tt>
-<tt>puts new_user.family_name</tt>
-<tt>puts new_user.given_name</tt>
+  new_user = myapps.create_user("jsmith", "john", "smith", "secret", nil, "2048")
+  puts new_user.family_name
+  puts new_user.given_name
 
 === Update a user
 
-<tt>user = myapps.retrieve_user('jsmith')</tt>
-<tt>user_updated = myapps.update_user(user.username, user.given_name, user.family_name, nil, nil, "true")</tt>
+  user = myapps.retrieve_user('jsmith')
+  user_updated = myapps.update_user(user.username, user.given_name, user.family_name, nil, nil, "true")
